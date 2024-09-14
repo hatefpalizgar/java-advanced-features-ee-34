@@ -6,7 +6,7 @@ package com.sda.p05_composition;
 // - rooms do not exist independently of the house; if the house is destroyed,
 // the rooms are also destroyed
 public class House {
-    private Room[] rooms;
+    private Room[] rooms; // a house is composed of rooms (composition)
     private int roomCount;
 
     public House(int roomCount) {
