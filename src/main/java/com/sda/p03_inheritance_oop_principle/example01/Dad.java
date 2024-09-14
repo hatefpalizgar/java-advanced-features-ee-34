@@ -1,4 +1,4 @@
-package com.sda.p03_inheritance_oop_principle;
+package com.sda.p03_inheritance_oop_principle.example01;
 
 // Class Dad inherits from class Person
 //
