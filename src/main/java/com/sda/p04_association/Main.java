@@ -19,5 +19,8 @@ public class Main {
     public static void main(String[] args) {
         Teacher teacher = new Teacher("Mr. Smith");
         Student student = new Student("Alice", teacher);
+
+        // Here if we destroy Student, we still have access to the teacher object,
+        // thanks to line 20 (teacher and student exist independently)
     }
 }
