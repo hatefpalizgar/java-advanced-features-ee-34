@@ -168,8 +168,34 @@ public class Main {
         // and every element is a separate object with a data part and address part.
         // The elements are linked using pointers or addresses.
         // Each element is known as a node.
+        // It also has a few disadvantages like the nodes cannot be accessed directly instead we need to
+        // start from the head and follow through the link to reach a node we wish to access
+        // LinkedLists are generally slower than Lists when it comes to accessing elements at a specific
+        // index, but they are faster at inserting and deleting elements in the middle of the list
+        // As a rule of thumb: Use an ArrayList for storing and accessing data, and LinkedList to
+        // manipulate data.
+        // Another difference between a LinkedList and a List is that LinkedLists have additional
+        // methods for manipulating the list,
+        // such as addFirst() and addLast(), which allow you to insert elements at the beginning or end
+        // of the list.
+        LinkedList<String> linkedList = new LinkedList<>(Arrays.asList("element1", "element2", "element3"));
+        linkedList.addFirst("first element");
+        linkedList.addLast("last element");
+
+        System.out.println(linkedList.getFirst());
+        System.out.println(linkedList.getLast());
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
 
 
+        /* ============================================================================================== */
+        //                                       Interview Questions
+        /* ============================================================================================== */
+        // 1. What is the difference between ArrayList and LinkedList?
+        // 2. How to sort an ArrayList of objects using custom comparator?
+        // 3. How to synchronize concurrent modifications to an ArrayList?
+        // (Collections.synchronizedList() and CopyOnWriteArrayList)
 
     }
 }
