@@ -195,4 +195,8 @@ public class Main {
     // Deadlock: occurs when two or more threads are blocked and waiting for each other to release a lock, resulting in standstill
     // refer to deadlock package
 
+    /* ========================================================================= */
+    //                              Atomic Variables
+    /* ========================================================================= */
+    // Refer to atomic package
 }
