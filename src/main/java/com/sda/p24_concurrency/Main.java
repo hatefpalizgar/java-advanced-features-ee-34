@@ -87,7 +87,7 @@ public class Main {
 
 
     public static void main(String[] args) throws InterruptedException {
-        Counter counter = new Counter();
+        Counter counter = new Counter(); // counter is the shared resource
         Thread t1 = new IncrementThread(counter);
         Thread t2 = new IncrementThread(counter);
 
@@ -107,7 +107,12 @@ public class Main {
     static class Counter {
         private int count = 0;
 
-        public void increment() {
+        // RACE CONDITION: when two or more threads try to access a shared resource concurrently,
+        // and the outcome of the program depends on the interleaving of the threads
+        // In this example, increment() method is being used by multiple threads at the same time,
+        // and if we don't use 'synchronized' keyword, we will end up in RACE CONDITION.
+        // This increment() method is called the CRITICAL SECTION
+        public synchronized void increment() {
             count++;
         }
 
@@ -131,5 +136,28 @@ public class Main {
         }
     }
 
+
+    // 3. How to synchronize a method:
+    class MyClass {
+       public synchronized void doSomething() {
+           // code to be synchronized
+       }
+    }
+
+    // 4. How to synchronize a block of code
+    class MyClass2 {
+        private Object lock = new Object();
+
+        public void doSomething() {
+            // some codes that not need to be synchronized
+            // ...
+            synchronized (lock){
+                // some codes that need to be synchronized
+                // ...
+            }
+        }
+    }
+
+    // Refer to synchronization package for more example
 
 }
