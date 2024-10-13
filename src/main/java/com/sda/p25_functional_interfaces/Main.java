@@ -1,5 +1,6 @@
 package com.sda.p25_functional_interfaces;
 
+
 public class Main {
     public static void main(String[] args) {
 
@@ -24,3 +25,7 @@ public class Main {
 
     }
 }
+
+/**
+* @see com.sda.p25_functional_interfaces.lambda_expression.LambdaWithNoParameter
+* */
