@@ -31,3 +31,9 @@ public class PredicateExample {
 interface Checker<T> {
     boolean check(T input);
 }
+
+
+/**
+ *
+ * @see com.sda.p25_functional_interfaces.built_in_jdk_func_interfaces.ConsumerExample
+ * */
