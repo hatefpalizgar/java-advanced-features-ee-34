@@ -71,11 +71,11 @@ public class Exercise1 {
         if (input == null) return Collections.emptyMap();
 
         Function<String, Integer> classifier = s -> s.length(); // group input strings based on their length
-        Supplier<Map<Integer, List<String>>> mapFactory = () -> new HashMap<>(); // return the final result as map
+        Supplier<Map<Integer, List<String>>> mapFactory = () -> new TreeMap<>(); // return the final result as map
         Collector<String, ?, List<String>> downstream = Collectors.toList(); // the list to which strings are collected into (values of our map)
 
         return input.stream()
-                .collect(Collectors.groupingBy(classifier, mapFactory, downstream));
+                .collect(Collectors.groupingBy(classifier, TreeMap::new, downstream));
     }
 
     /**
@@ -146,15 +146,15 @@ public class Exercise1 {
     @Test
     public void testGroupStringsByLength() {
         // given
-        List<String> input = List.of("a", "x", "bb", "ccc", "dddd", "eeeee");
+        List<String> input = List.of("a", "x", "bt", "bb", "ccc", "dddd", "eeeee");
         Map<Integer, List<String>> expected = new HashMap<>();
-        expected.put(1, List.of("a", "x"));
-        expected.put(2, List.of("bb"));
-        expected.put(3, List.of("ccc"));
+        expected.put(2, List.of("bb", "bt"));
         expected.put(4, List.of("dddd"));
+        expected.put(3, List.of("ccc"));
+        expected.put(1, List.of("a", "x"));
         expected.put(5, List.of("eeeee"));
         // 1 -> [a, x]
-        // 2 -> [bb]
+        // 2 -> [bb, bt]  // sorted alphabetically
         // 3 -> [ccc]
         // 4 -> [dddd]
         // 5 -> [eeeee]
@@ -166,6 +166,8 @@ public class Exercise1 {
         assertEquals(expected, actual); // happy path (correct form of input, yields correct form of output)
         assertEquals(Collections.emptyMap(), groupStringsByLength(null));
         assertEquals(Collections.emptyMap(), groupStringsByLength(Collections.emptyList()));
+
+        // TODO: Make this test pass (or sort the elements inside the list)
     }
 
 
